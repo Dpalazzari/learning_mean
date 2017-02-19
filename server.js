@@ -16,11 +16,11 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, 'client')));
 
 // Body Parser Middleware
-app.user(bodyParser.json());
-app.user(bodyParser.urlencoded({extended: false}));
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: false}));
 
 app.use('/', index);
-app.user('/api', tasks);
+app.use('/api', tasks);
 
 app.listen(port, function(){
   console.log('Listening to port ' + port);
